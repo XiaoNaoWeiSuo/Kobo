@@ -4,16 +4,12 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kobo/core.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 
 //网页跳转
 Future<void> _launchInBrowser(Uri url) async {
-  if (!await launchUrl(
-    url,
-    mode: LaunchMode.externalApplication,
-  )) {
-    throw Exception('Could not launch $url');
-  }
+  html.window.location.href = url.toString();
 }
 
 class IndexScreen extends StatefulWidget {
@@ -450,7 +446,7 @@ class LoginScreenState extends State<LoginScreen> {
             },
           );
           _launchInBrowser(Uri.parse(
-              'http://49.235.106.67:5000/home?token=${responseData['token']}'));
+              'http://49.235.106.67:5000/home/?token=${responseData['token']}'));
           // 登录成功，你可以在这里处理token
           //print('登录成功。Token: ${responseData['token']}');
           // 导航到下一个屏幕或执行其他操作
@@ -734,7 +730,7 @@ class RegisterScreenState extends State<RegisterScreen> {
             },
           );
           _launchInBrowser(Uri.parse(
-              'http://49.235.106.67:5000/home?token=${response.data["token"]}'));
+              'http://49.235.106.67:5000/home/?token=${response.data["token"]}'));
         } else if (response.data["status"] == "error") {
           showDialog(
             context: context,

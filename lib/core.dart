@@ -13,7 +13,7 @@ Future<String> getimageurl() async {
 }
 
 Future<Map> IntoHome(token) async {
-  String url = 'http://49.235.106.67:5000/api/userdata/';
+  String url = 'http://49.235.106.67:5001/api/userdata/';
   Map<String, dynamic> data = {"Authorization": token};
   //print(username);
   // 发送注册请求的代码...

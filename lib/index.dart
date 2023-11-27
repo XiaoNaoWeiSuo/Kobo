@@ -410,7 +410,7 @@ class LoginScreenState extends State<LoginScreen> {
   TextEditingController _passwordController = TextEditingController();
   bool checkboxstate = false;
   Future<void> _login() async {
-    final url = "http://49.235.106.67:5000/api/login/";
+    final url = "http://49.235.106.67:5001/api/login/";
     final data = {
       "username": _usernameController.text,
       "password": _passwordController.text,
@@ -446,7 +446,7 @@ class LoginScreenState extends State<LoginScreen> {
             },
           );
           _launchInBrowser(Uri.parse(
-              'http://49.235.106.67:5000/home/?token=${responseData['token']}'));
+              'http://49.235.106.67:5001/home/?token=${responseData['token']}'));
           // 登录成功，你可以在这里处理token
           //print('登录成功。Token: ${responseData['token']}');
           // 导航到下一个屏幕或执行其他操作
@@ -699,7 +699,7 @@ class RegisterScreenState extends State<RegisterScreen> {
     }
 
     // 调用注册接口发送请求
-    String url = 'http://49.235.106.67:5000/api/register/';
+    String url = 'http://49.235.106.67:5001/api/register/';
     Map<String, dynamic> data = {
       'username': username,
       'password': password,
@@ -730,7 +730,7 @@ class RegisterScreenState extends State<RegisterScreen> {
             },
           );
           _launchInBrowser(Uri.parse(
-              'http://49.235.106.67:5000/home/?token=${response.data["token"]}'));
+              'http://49.235.106.67:5001/home/?token=${response.data["token"]}'));
         } else if (response.data["status"] == "error") {
           showDialog(
             context: context,
